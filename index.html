@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Saved to Cart — veraetogrex_portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Saved to Cart · zero dependencies · github.com/veraetogrex-portfolio -->
+  <section class="sc" id="shop" aria-label="Saved items and cart">
+    <p class="sc-brand"><b>VECTOR</b><span>Home</span></p>
+
+    <div class="sc-panel sc-panel-saved" aria-hidden="true"></div>
+    <div class="sc-panel sc-panel-cart" aria-hidden="true"></div>
+
+    <header class="sc-head sc-head-saved">
+      <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h10v17l-5-3.6-5 3.6z"/></svg>Saved for later</h2>
+      <span class="sc-count" data-list="saved">3 items</span>
+    </header>
+    <header class="sc-head sc-head-cart">
+      <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>Your cart</h2>
+      <span class="sc-count is-cart" data-list="cart">2 items</span>
+    </header>
+
+    <div class="sc-saved" role="list" aria-label="Saved for later"></div>
+    <!-- the space a moved card leaves keeps its outline and the way back -->
+    <div class="sc-undo" role="status"><span class="sc-undo-art" aria-hidden="true"></span>
+      <p class="sc-undo-t"><b>In your cart</b><span class="sc-undo-what">Pour-over set</span></p>
+      <button class="sc-undo-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7L4.5 11.5 9 16"/><path d="M5 11.5h9a5 5 0 0 1 0 10h-2"/></svg>Undo</button></div>
+
+    <!-- the cart is a kraft paper bag; through its window you see the things inside, up to a dashed free-delivery line -->
+    <div class="sc-bag">
+      <div class="sc-bag-inside" aria-hidden="true"></div>
+      <div class="sc-line" aria-hidden="true"><i></i></div>
+      <div class="sc-gap" aria-hidden="true"></div>
+      <p class="sc-togo" aria-hidden="true">$12 to go</p>
+      <p class="sc-over" aria-hidden="true">+$12</p>
+      <div class="sc-bag-items" role="list" aria-label="In your cart"></div>
+      <svg class="sc-bag-front" viewBox="0 0 580 528" aria-hidden="true"></svg>
+      <p class="sc-mark" aria-hidden="true">$80</p>
+      <p class="sc-print" aria-hidden="true">VECTOR</p>
+      <p class="sc-rim">Free delivery<br>from $80</p>
+      <p class="sc-sticker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Free delivery</p>
+      <p class="sc-total-label">Total</p>
+      <p class="sc-total" aria-live="polite">$68</p>
+    </div>
+    <button class="sc-checkout">Checkout</button>
+
+    <div class="sc-flyer" aria-hidden="true"></div>
+    <p class="sc-live" aria-live="polite"></p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

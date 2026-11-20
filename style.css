@@ -1,0 +1,118 @@
+/* Saved to Cart — github.com/veraetogrex-portfolio · zero dependencies */
+:root {
+  --page: #07080c; --shelf-back: #0e1016;           /* page and the two panels */
+  --tray: #191b22;                                   /* a saved card */
+  --text: #f5f2ee; --text-2: #bdb8b0; --text-3: #9a948c;
+  --line: rgba(255, 255, 255, .08);
+  --ember: #ff7b2e; --ember-ink: #1c0e05;            /* the move button, free delivery, checkout */
+  --ember-soft: rgba(255, 123, 46, .14);
+  --ember-lit: #ff9450;                              /* the same orange, lighter: holds 3.5:1 on the dark inside of the bag (+$12, the bracket, the solid line) */
+  --studio: #e8dfd3;                                 /* the backdrop of a product photo */
+  --kraft: #c9a271; --kraft-fold: #b48b5b; --kraft-in: #6b4e33;   /* the paper bag: front, folds, inside */
+  --bag-ink: #2b1d12; --bag-ink-2: #4e3823;          /* what is printed on the bag */
+  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: var(--font);
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; overflow: hidden; background: var(--page); color: var(--text); font: 16px/1.4 var(--font); }
+p, h2 { margin: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+button:focus-visible { outline: 3px solid var(--ember); outline-offset: 3px; }
+
+.sc { position: relative; width: 1360px; height: 800px; user-select: none; -webkit-user-select: none; }
+@media (max-width: 1400px) { .sc { zoom: .8; } }
+@media (max-width: 1100px) { .sc { zoom: .6; } }
+@media (max-width: 820px)  { .sc { zoom: .4; } }
+@media (max-width: 560px)  { .sc { zoom: .27; } }
+
+.sc-brand { position: absolute; left: 44px; top: 36px; display: flex; align-items: baseline; gap: 14px; }
+.sc-brand b { font: 800 24px var(--font); letter-spacing: .04em; }
+.sc-brand span { font: 600 22px var(--font); color: var(--text-3); }
+
+.sc-panel { position: absolute; top: 104px; height: 686px; border-radius: 28px; background: var(--shelf-back);
+  box-shadow: 0 0 0 1px var(--line) inset, 0 1px 0 rgba(255, 255, 255, .05) inset; }
+.sc-panel-saved { left: 40px; width: 460px; height: 652px; }
+.sc-panel-cart  { left: 540px; width: 780px; }
+
+.sc-head { position: absolute; top: 124px; height: 44px; display: flex; align-items: center; justify-content: space-between; }
+.sc-head-saved { left: 64px; width: 412px; }
+.sc-head-cart  { left: 564px; width: 732px; }
+.sc-head h2 { display: flex; align-items: center; gap: 12px; font: 700 30px var(--font); letter-spacing: -.01em; }
+.sc-head h2 svg { width: 28px; height: 28px; fill: none; stroke: var(--text-3); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.sc-count { height: 40px; padding: 0 16px; border-radius: 12px; display: inline-flex; align-items: center; background: var(--tray); font: 600 24px var(--font); color: var(--text-2); font-variant-numeric: tabular-nums; }
+.sc-count.is-cart { background: var(--ember-soft); color: var(--ember); }
+
+/* saved cards: photo, name, price and the button that sends it to the bag */
+.sc-saved { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+/* past three cards they pile up under the third slot: the first one stays on top, the rest show a 10 px edge below it */
+.sc-card:nth-child(1) { z-index: 5; } .sc-card:nth-child(2) { z-index: 4; } .sc-card:nth-child(3) { z-index: 3; } .sc-card:nth-child(4) { z-index: 2; } .sc-card:nth-child(5) { z-index: 1; }
+.sc-card:focus-within { z-index: 9; }
+.sc-card { position: absolute; left: 56px; top: 0; width: 428px; height: 172px; border-radius: 20px; background: var(--tray); pointer-events: auto;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .06) inset; }
+.sc-card .sc-art { position: absolute; left: 12px; top: 12px; }
+.sc-name { position: absolute; left: 176px; top: 18px; font: 600 28px/1.15 var(--font); letter-spacing: -.01em; white-space: nowrap; }
+.sc-price { position: absolute; left: 176px; top: 58px; font: 700 44px/1 var(--display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sc-move { position: absolute; left: 176px; top: 112px; width: 236px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--ember-soft); color: var(--ember); font: 700 24px var(--font); white-space: nowrap; transition: transform .12s ease-out, background-color .12s, color .12s; }
+.sc-move svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.sc-move:hover { background: rgba(255, 123, 46, .22); }
+.sc-move:active, .sc-move.is-pressed { transform: scale(.95); background: var(--ember); color: var(--ember-ink); }   /* a press you can see from across the room */
+
+.sc-art { display: block; width: 148px; height: 148px; border-radius: 18px; overflow: hidden; background: var(--studio); transform-origin: 0 0; }
+.sc-art svg, .sc-obj svg { display: block; width: 100%; height: 100%; }
+
+/* the way back: the space the card left keeps a dashed outline of it, a faded photo and Undo */
+.sc-undo { position: absolute; left: 56px; top: 0; width: 428px; height: 172px; border-radius: 20px; border: 2px dashed rgba(245, 242, 238, .22); opacity: 0; visibility: hidden; }
+.sc-undo-art { position: absolute; left: 10px; top: 10px; width: 148px; height: 148px; border-radius: 18px; overflow: hidden; background: var(--studio); opacity: .3; filter: grayscale(1); }
+.sc-undo-art svg { display: block; width: 100%; height: 100%; }
+.sc-undo-t { position: absolute; left: 174px; top: 16px; display: flex; flex-direction: column; gap: 2px; white-space: nowrap; }
+.sc-undo-t b { font: 700 28px var(--font); }
+.sc-undo-what { font: 600 22px var(--font); color: var(--text-2); }
+.sc-undo-btn { position: absolute; left: 174px; top: 104px; width: 236px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--ember); color: var(--ember-ink); font: 700 26px var(--font); transition: transform .12s ease-out; }
+.sc-undo-btn svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.sc-undo-btn:active, .sc-undo-btn.is-pressed { transform: scale(.94); }
+
+/* the bag (component px: 640,176 → 1220,704); no z-index here, so its layers stack with the flying item.
+   Window: bag px 40,96 → 500,470, its bottom is $0. The free-delivery line runs across it and on over the kraft to "$80". */
+.sc-bag { position: absolute; left: 640px; top: 176px; width: 580px; height: 528px; }
+.sc-bag-inside { position: absolute; z-index: 1; left: 30px; top: 86px; width: 480px; height: 394px; background: var(--kraft-in); }
+.sc-line { position: absolute; z-index: 2; left: 40px; top: 0; width: 460px; height: 4px; border-top: 3px dashed rgba(245, 242, 238, .85); }
+.sc-line i { position: absolute; left: 0; right: 0; top: -4px; height: 5px; background: var(--ember-lit); opacity: 0; transform-origin: 50% 50%; }
+/* the gap between the pile and the line: a bracket, pale while short of it, orange once over it */
+.sc-gap { position: absolute; z-index: 5; left: 462px; top: 0; width: 18px; height: 0; color: var(--text); }
+.sc-gap b { position: absolute; background: currentColor; }
+.sc-gap-v { left: 14px; top: 0; width: 4px; height: 100px; transform-origin: 0 0; }   /* 100 px scaled down, not 1 px scaled up: a 1 px box snaps to a whole device pixel under zoom */
+.sc-gap-a, .sc-gap-b { left: 0; top: -2px; width: 18px; height: 4px; border-radius: 2px; }
+.sc-togo, .sc-over { position: absolute; z-index: 5; left: 252px; top: 0; width: 200px; text-align: right; font: 800 32px/40px var(--font); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sc-togo { color: var(--text); }
+.sc-over { color: var(--ember-lit); font-size: 40px; opacity: 0; }
+.sc-bag-items { position: absolute; z-index: 3; left: 40px; top: 96px; width: 460px; height: 374px; clip-path: inset(0 round 14px); }
+.sc-bag-front { position: absolute; z-index: 4; left: 0; top: 0; width: 580px; height: 528px; overflow: visible; pointer-events: none; }
+.sc-mark { position: absolute; z-index: 6; left: 509px; top: 0; font: 800 24px/30px var(--font); color: var(--bag-ink); white-space: nowrap; }
+.sc-print { position: absolute; z-index: 6; left: 0; top: 60px; width: 580px; height: 30px; text-align: center; font: 800 22px/30px var(--font); letter-spacing: .3em; color: var(--bag-ink-2); }
+.sc-rim { position: absolute; z-index: 6; left: 40px; top: 473px; width: 230px; font: 700 22px/24px var(--font); color: var(--bag-ink); white-space: nowrap; }
+.sc-sticker { position: absolute; z-index: 6; left: 30px; top: 474px; width: 240px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--ember); color: var(--ember-ink); font: 700 26px var(--font); opacity: 0; visibility: hidden; box-shadow: 0 2px 0 rgba(0, 0, 0, .25); white-space: nowrap; }
+.sc-sticker svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.sc-total-label { position: absolute; z-index: 6; left: 292px; top: 486px; font: 700 22px var(--font); color: var(--bag-ink-2); }
+.sc-total { position: absolute; z-index: 6; right: 40px; top: 471px; font: 800 52px/1 var(--display); letter-spacing: -.04em; color: var(--bag-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* what is in the bag: the things themselves, each with a paper price tag (the tag takes it back out) */
+.sc-thing { position: absolute; left: 0; top: 0; pointer-events: none; }
+.sc-obj { position: absolute; left: 0; top: 0; transform-origin: 50% 82%; filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .35)); }
+.sc-tag { position: absolute; left: 0; top: 0; height: 40px; padding: 0 26px 0 12px; border-radius: 10px 6px 6px 10px; display: flex; align-items: center; gap: 6px; pointer-events: auto;
+  background: #f4efe6; color: var(--bag-ink); font: 800 26px var(--font); font-variant-numeric: tabular-nums; white-space: nowrap; box-shadow: 0 3px 6px rgba(0, 0, 0, .35); transform-origin: 100% 50%; }
+.sc-tag::before { content: ""; position: absolute; right: 9px; top: 15px; width: 10px; height: 10px; border-radius: 50%; background: var(--kraft-in); }
+.sc-tag svg { width: 18px; height: 18px; fill: none; stroke: var(--bag-ink-2); stroke-width: 2.4; stroke-linejoin: round; pointer-events: none; }
+.sc-tag:hover { background: #fff; }
+
+.sc-checkout { position: absolute; left: 564px; top: 718px; width: 732px; height: 56px; border-radius: 16px; background: var(--ember); color: var(--ember-ink);
+  font: 700 26px var(--font); text-align: center; transition: transform .15s ease-out; }
+.sc-checkout:active { transform: scale(.98); }
+
+/* the item on its way into the bag (or out of it) */
+.sc-flyer { position: absolute; left: 0; top: 0; z-index: 2; width: 148px; height: 148px; opacity: 0; pointer-events: none; transform-origin: 0 0; filter: drop-shadow(0 16px 22px rgba(0, 0, 0, .5)); }
+
+.sc-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (prefers-reduced-motion: reduce) { .sc-move, .sc-undo-btn { transition: none; } }
